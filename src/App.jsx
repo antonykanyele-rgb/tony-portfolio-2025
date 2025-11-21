@@ -1,9 +1,11 @@
 import { useState } from 'react'
+import MpesaInvoice from './MpesaInvoice'
 
 function App() {
   const [rabbitsSold, setRabbitsSold] = useState(0)
   const [darkMode, setDarkMode] = useState(false)
   const [formStatus, setFormStatus] = useState('')
+  const [currentPage, setCurrentPage] = useState('home')
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -21,6 +23,19 @@ function App() {
     card: darkMode ? '#1a1a1a' : '#ffffff',
     cardBorder: darkMode ? '#262626' : '#e2e8f0',
     input: darkMode ? '#1a1a1a' : '#f1f5f9'
+  }
+
+  if (currentPage === 'invoice') {
+    return (
+      <div style={{
+        minHeight: '100vh',
+        background: theme.bg,
+        color: theme.text,
+        fontFamily: "'Inter', system-ui, -apple-system, sans-serif"
+      }}>
+        <MpesaInvoice darkMode={darkMode} theme={theme} onBack={() => setCurrentPage('home')} />
+      </div>
+    )
   }
 
   return (
@@ -85,7 +100,7 @@ function App() {
           <div style={{
             display: 'inline-block',
             padding: '0.5rem 1rem',
-            background: darkMode ? 'rgba(14,165,233,0.1)' : 'rgba(14,165,233,0.1)',
+            background: 'rgba(14,165,233,0.1)',
             border: '1px solid rgba(14,165,233,0.3)',
             borderRadius: '999px',
             marginBottom: '1.5rem'
@@ -144,7 +159,7 @@ function App() {
         </div>
       </section>
 
-      {/* Stats/Fun Section */}
+      {/* Stats Section */}
       <section style={{
         padding: '4rem 2rem',
         background: theme.bgAlt,
@@ -189,13 +204,51 @@ function App() {
             gap: '1.5rem',
             gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))'
           }}>
+            {/* M-Pesa Invoice - Clickable */}
+            <div
+              onClick={() => setCurrentPage('invoice')}
+              style={{
+                background: theme.card,
+                border: `1px solid ${theme.cardBorder}`,
+                borderRadius: '1rem',
+                padding: '2rem',
+                cursor: 'pointer',
+                transition: 'transform 0.2s ease, box-shadow 0.2s ease'
+              }}
+            >
+              <div style={{
+                display: 'inline-block',
+                padding: '0.25rem 0.75rem',
+                background: 'rgba(34,197,94,0.1)',
+                color: '#22c55e',
+                borderRadius: '999px',
+                fontSize: '0.75rem',
+                fontWeight: 600,
+                marginBottom: '1rem'
+              }}>
+                Try it Live
+              </div>
+              <h3 style={{ fontSize: '1.25rem', fontWeight: 700, marginBottom: '0.75rem' }}>M-Pesa Invoice Generator</h3>
+              <p style={{ color: theme.textMuted, marginBottom: '1.5rem', lineHeight: 1.6, fontSize: '0.95rem' }}>
+                Create and send professional invoices with M-Pesa payment details. Built for Kenyan freelancers and small businesses.
+              </p>
+              <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
+                {['React', 'PDF Export', 'M-Pesa'].map(tag => (
+                  <span key={tag} style={{
+                    padding: '0.25rem 0.75rem',
+                    background: theme.bgAlt,
+                    borderRadius: '0.25rem',
+                    fontSize: '0.75rem',
+                    color: theme.textMuted
+                  }}>
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            {/* Other Projects */}
             {[
-              {
-                title: "M-Pesa Invoice Generator",
-                desc: "Create and send professional invoices with M-Pesa payment details. Built for Kenyan freelancers and small businesses.",
-                tags: ["React", "Node.js", "M-Pesa API"],
-                status: "In Development"
-              },
               {
                 title: "RabbitFarm Tracker",
                 desc: "Full-stack farm management app for tracking sales, breeding cycles, and inventory.",
@@ -215,8 +268,7 @@ function App() {
                   background: theme.card,
                   border: `1px solid ${theme.cardBorder}`,
                   borderRadius: '1rem',
-                  padding: '2rem',
-                  transition: 'transform 0.2s ease, box-shadow 0.2s ease'
+                  padding: '2rem'
                 }}
               >
                 <div style={{
@@ -355,10 +407,6 @@ function App() {
 }
 
 export default App
-
-
-
-
 
 
 
