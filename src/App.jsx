@@ -1,63 +1,71 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
-import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [rabbitsSold, setRabbitsSold] = useState(0)
 
   return (
-    <>
-      <<div className="min-h-screen bg-gradient-to-b from-gray-900 to-black text-white flex items-center justify-center p-6">
-  <div className="max-w-4xl text-center space-y-12">
-    <h1 className="text-5xl md:text-7xl font-bold tracking-tight">
-      TONY KIOKO
-    </h1>
-    <p className="text-2xl md:text-3xl text-cyan-400 font-light">
-      Full-Stack Developer × Rabbit Farmer
-    </p>
-    <p className="text-lg md:text-xl max-w-2xl mx-auto opacity-90 leading-relaxed">
-      I build fast, clean web apps … and raise the best rabbits in Eastern Kenya.
-    </p>    <div className="bg-white/10 backdrop-blur-lg rounded-3xl p-10 inline-block mt-12 shadow-2xl">
-      <img 
-        src="/vite.svg" 
-        alt="Rabbit placeholder" 
-        className="w-32 mx-auto mb-6 animate-bounce"
-      />
-      <p className="text-6xl font-bold text-cyan-400">{rabbitsSold}</p>
-      <p className="text-2xl mt-2">rabbits sold this month</p>
-      <button
-        onClick={() => setRabbitsSold(rabbitsSold + 1)}
-        className="mt-6 px-10 py-4 bg-cyan-500 hover:bg-cyan-400 rounded-full font-bold text-black text-xl transition shadow-lg">
-        Sell One Rabbit 🐰
-      </button>
-          <p className="mt-12 text-lg opacity-80">
-      RabbitFarm Manager app launching January 2025 · Built & deployed from a Samsung A06
-    </p>
+    <div style={{
+      minHeight: '100vh',
+      background: 'linear-gradient(to bottom, #111827, #000000)',
+      color: 'white',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      padding: '2rem',
+      fontFamily: 'system-ui, sans-serif'
+    }}>
+      <div style={{ maxWidth: '1024px', textAlign: 'center' }}>
+        <h1 style={{ fontSize: 'clamp(3rem, 10vw, 6rem)', fontWeight: 'bold' }}>
+          TONY KIOKO
+        </h1>
+        <p style={{ fontSize: 'clamp(1.5rem, 5vw, 2.5rem)', color: '#0ea5e9' }}>
+          Full-Stack Developer × Rabbit Farmer
+        </p>
+        <p style={{ fontSize: '1.25rem', maxWidth: '600px', margin: '0 auto 3rem', opacity: 0.9 }}>
+          I build fast, clean web apps … and raise the best rabbits in Eastern Kenya.
+        </p>
 
-    <a 
-      href="https://www.upwork.com/fl/~01e..." 
-      target="_blank"
-      rel="noopener"
-      className="inline-block mt-10 px-12 py-5 bg-cyan-500 hover:bg-cyan-400 rounded-full text-black font-bold text-2xl transition shadow-xl">
-      Hire Me on Upwork
-    </a>
-  </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
+        <div style={{
+          background: 'rgba(255,255,255,0.1)',
+          backdropFilter: 'blur(12px)',
+          borderRadius: '2rem',
+          padding: '3rem 2rem',
+          display: 'inline-block'
+        }}>
+          <img src={viteLogo} alt="Rabbit" style={{ width: '120px', animation: 'bounce 1s infinite' }} />
+          <p style={{ fontSize: '5rem', fontWeight: 'bold', color: '#0ea5e9' }}>
+            {rabbitsSold}
+          </p>
+          <p style={{ fontSize: '1.5rem' }}>rabbits sold this month</p>
+          <button onClick={() => setRabbitsSold(rabbitsSold + 1)}
+            style={{
+              padding: '1rem 3rem',
+              background: '#0ea5e9',
+              border: 'none',
+              borderRadius: '999px',
+              fontSize: '1.5rem',
+              fontWeight: 'bold',
+              color: 'black',
+              cursor: 'pointer'
+            }}>
+            Sell One Rabbit 🐰
+          </button>
+        </div>
+
+        <p style={{ marginTop: '3rem', opacity: 0.8 }}>
+          RabbitFarm Manager • January 2025 • Built on a Samsung A06
         </p>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+
+      <style>{`
+        @keyframes bounce {
+          0%,100% { transform: translateY(0); }
+          50% { transform: translateY(-20px); }
+        }
+      `}</style>
+    </div>
   )
 }
 
 export default App
-// victory commit Fri Nov 21 03:23:11 EAT 2025
