@@ -250,10 +250,11 @@ function App() {
             {/* Other Projects */}
             {[
               {
-                title: "RabbitFarm Tracker",
-                desc: "Full-stack farm management app for tracking sales, breeding cycles, and inventory.",
-                tags: ["React", "Firebase", "PWA"],
-                status: "Coming Soon"
+                title: "BuildCalc Pro",
+                desc: "Construction cost estimator for multi-story buildings. Calculates, materials, labour, and generates downloadable estimates.",
+                tags: ["React", "Vite", "Vercel"],
+                status: "Live",
+                link:"https://buildcalc-pro.vercel.app"
               },
               {
                 title: "Church Website Kit",
@@ -298,6 +299,7 @@ function App() {
                     </span>
                   ))}
                 </div>
+{p.link && <a href={p.link} target="_blank" style={{ color: theme.accent,marginTop: '1rem', display: 'block' }}>View Live -></a>}
               </div>
             ))}
           </div>
